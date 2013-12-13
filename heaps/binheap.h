@@ -109,7 +109,7 @@ size_t binheap<K, V>::size () const
 	return sum;
 }
 
-//--private-fuctions-------------
+//--private-functions-------------
 
 template <typename K, typename V>
 std::list<typename binheap<K, V>::_node *> binheap<K, V>::recursive_list_copy (const std::list<typename binheap<K, V>::_node *> & old_list) const
@@ -130,10 +130,8 @@ template <typename K, typename V>
 typename std::list<typename binheap<K, V>::_node *>::const_iterator binheap<K, V>::find_min () const
 {
 	typename std::list<_node *>::const_iterator min = _roots.begin();
-	typename std::list<_node *>::const_iterator non_const_p = _roots.begin();
 	for (auto p = _roots.begin(); p != _roots.end(); ++p) {
-		if ((*p)->_key < (*min)->_key) min = non_const_p;
-		++non_const_p;
+		if ((*p)->_key < (*min)->_key) min = p;
 	}
 	return min;
 }
@@ -142,10 +140,10 @@ template <typename K, typename V>
 typename std::list<typename binheap<K, V>::_node *>::iterator binheap<K, V>::find_min ()
 {
 	typename std::list<_node *>::iterator min = _roots.begin();
-	typename std::list<_node *>::iterator non_const_p = _roots.begin();
-	for (auto p = _roots.begin(); p != _roots.end(); ++p) {
-		if ((*p)->_key < (*min)->_key) min = non_const_p;
-		++non_const_p;
+	typename std::list<_node *>::iterator p = _roots.begin();
+	for (size_t i = 0; i < _roots.size(); ++i) {
+		if ((*p)->_key < (*min)->_key) min = p;
+		++p;
 	}
 	return min;
 }

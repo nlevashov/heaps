@@ -10,7 +10,7 @@ int main() {
 	binheap<int, int> a, b;
 	b = a;
 
-	for (int i = -5; i <= 5; i++) a.push(i, (i + 11) * 100);
+	for (int i = -5; i <= 5; i++) a.push(i, i * 100);
 
 	b = a;
 
@@ -66,6 +66,10 @@ int main() {
 		cout << p.first << ' ' << p.second << '\t';
 	}
 	cout << endl;
+
+	binheap<int, int> empty;
+	//empty.top();
+	//empty.pop();
 
 	return 0;
 }

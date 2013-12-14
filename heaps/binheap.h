@@ -49,6 +49,7 @@ template <typename K, typename V>
 std::pair<K, V> binheap<K, V>::top () const
 {
 	if (_roots.size() == 0) {
+		throw "Empty heap\n";
 	} else {
 		auto min = find_min();
 		return std::pair<K, V> ((*min)->_key, (*min)->_value);
@@ -59,6 +60,7 @@ template <typename K, typename V>
 std::pair<K, V> binheap<K, V>::pop ()
 {
 	if (_roots.size() == 0) {
+		throw "Empty heap\n";
 	} else {
 		auto min = find_min();
 		std::pair<K, V> result((*min)->_key, (*min)->_value);
